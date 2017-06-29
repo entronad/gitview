@@ -27,20 +27,39 @@ export default class gitview extends Component {
       <View style={styles.container}>
         <TabNavigator>
           <TabNavigator.Item
-            selected={this.state.selectedTab === 'home'}
+            selected={this.state.selectedTab === 'tb_popular'}
+            selectedTitleStyle={{color: 'red'}}
             title="Home"
             renderIcon={() => <Image style={styles.image} source={require('./res/images/ic_popular.png')} />}
-            renderSelectedIcon={() => <Image style={styles.image} source={require('./res/images/ic_popular.png')} />}
+            renderSelectedIcon={() => <Image style={[styles.image, {tintColor: 'red'}]} source={require('./res/images/ic_popular.png')} />}
             badgeText="1"
-            onPress={() => this.setState({ selectedTab: 'home' })}>
+            onPress={() => this.setState({ selectedTab: 'tb_popular' })}>
             <View style={styles.page1}></View>
           </TabNavigator.Item>
           <TabNavigator.Item
-            selected={this.state.selectedTab === 'profile'}
+            selected={this.state.selectedTab === 'tb_trending'}
             title="Profile"
             renderIcon={() => <Image style={styles.image} source={require('./res/images/ic_trending.png')} />}
             renderSelectedIcon={() => <Image style={styles.image} source={require('./res/images/ic_trending.png')} />}
-            onPress={() => this.setState({ selectedTab: 'profile' })}>
+            onPress={() => this.setState({ selectedTab: 'tb_trending' })}>
+            <View style={styles.page2}></View>
+          </TabNavigator.Item>
+          <TabNavigator.Item
+            selected={this.state.selectedTab === 'tb_favorite'}
+            selectedTitleStyle={{color: 'red'}}
+            title="Home"
+            renderIcon={() => <Image style={styles.image} source={require('./res/images/ic_popular.png')} />}
+            renderSelectedIcon={() => <Image style={[styles.image, {tintColor: 'red'}]} source={require('./res/images/ic_popular.png')} />}
+            badgeText="1"
+            onPress={() => this.setState({ selectedTab: 'tb_favorite' })}>
+            <View style={styles.page1}></View>
+          </TabNavigator.Item>
+          <TabNavigator.Item
+            selected={this.state.selectedTab === 'tb_my'}
+            title="Profile"
+            renderIcon={() => <Image style={styles.image} source={require('./res/images/ic_trending.png')} />}
+            renderSelectedIcon={() => <Image style={styles.image} source={require('./res/images/ic_trending.png')} />}
+            onPress={() => this.setState({ selectedTab: 'tb_my' })}>
             <View style={styles.page2}></View>
           </TabNavigator.Item>
         </TabNavigator>
