@@ -10,9 +10,11 @@ import {
   StyleSheet,
   Text,
   View,
-  Image
+  Image,
+  TouchableOpacity
 } from 'react-native';
-import TabNavigator from 'react-native-tab-navigator';
+import TabNavigator from 'react-native-tab-navigator'
+import NavigationBar from './NavigationBar'
 
 export default class gitview extends Component {
   constructor(props) {
@@ -25,6 +27,22 @@ export default class gitview extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <NavigationBar
+          title={'boy'}
+          style={{
+            backgroundColor: 'red'
+          }}
+          statusBar = {
+            {
+              backgroundColor: 'red'
+            }
+          }
+          leftButton = {
+            <TouchableOpacity>
+              <Image source={require('./res/images/ic_arrow_back_white_36pt.png')}/>
+            </TouchableOpacity>
+          }
+        />
         <TabNavigator>
           <TabNavigator.Item
             selected={this.state.selectedTab === 'tb_popular'}
