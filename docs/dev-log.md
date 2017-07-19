@@ -22,10 +22,6 @@ md、代码查看（下载，离线查看）
 
 代码贡献热力图
 
-# 产品调研
-
-http://github.phodal.com/
-
 # techstack
 
 产品设计
@@ -52,7 +48,13 @@ navigator
 
 https://github.com/react-community/react-navigation
 
+zip解压
+
+https://github.com/mockingbot/react-native-zip-archive
+
 # ref
+
+https://github.com/gitpoint/git-point
 
 https://github.com/pockethub/PocketHub
 
@@ -61,6 +63,8 @@ https://github.com/gdestiny/graduation_github
 https://github.com/seasonfif/github
 
 https://github.com/crazycodeboy/GitHubPopular
+
+http://github.phodal.com/ 关于github
 
 ---
 
