@@ -78,6 +78,26 @@ local：
 
 # 组件：repository首页
 
+## 总览
+
+尽量自然页面显示，不放在框内
+
+简介、标签
+
+star/watch/fork 
+
+README.md    不足XX长度全部渲染，有多长渲染多长，不显示“显示完整README.md”，超过XX长度，只渲染XX长度，显示“显示完整README.md”
+
+新鲜事    ListView自然渲染，下拉添加
+
+## 代码
+
+## 提交
+
+## issue
+
+## PR
+
 ---
 
 antd-mobile: `Table`/`Menu`/`NavBar` 组件暂无 React Native 版本
