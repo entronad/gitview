@@ -102,3 +102,11 @@ README.md    不足XX长度全部渲染，有多长渲染多长，不显示“�
 
 antd-mobile: `Table`/`Menu`/`NavBar` 组件暂无 React Native 版本
 
+# Design
+
+| 颜色名       | RGB      |
+| --------- | -------- |
+| dark-g    | \#1e2327 |
+| shallow-g | \#fafbfc |
+| blue-g    | \#0366d6 |
+| blue-antd | \#108ee9 |
