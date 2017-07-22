@@ -98,6 +98,12 @@ README.md    不足XX长度全部渲染，有多长渲染多长，不显示“�
 
 ## PR
 
+# 组件：Explore
+
+第一版只提供搜索
+
+点击底部导航栏的按钮或后退键会回到顶部
+
 ---
 
 antd-mobile: `Table`/`Menu`/`NavBar` 组件暂无 React Native 版本
