@@ -116,3 +116,44 @@ antd-mobile: `Table`/`Menu`/`NavBar` 组件暂无 React Native 版本
 | shallow-g | \#fafbfc |
 | blue-g    | \#0366d6 |
 | blue-antd | \#108ee9 |
+
+
+
+# 功能的简化
+
+模块页面：下方nvbar显示，并通过其切换，toolbar上无返回，登录后有头像，头像点击是menu
+
+独立页面：下方无nvbar，可返回
+
+**ModuleView**
+
+dashboard
+
+​	先只做总览（类似profile页面）
+
+explore
+
+​	搜索
+
+compare
+
+**IndivView**
+
+repo
+
+profile
+
+commit 先不做
+
+pr 先不做
+
+issue 先不做
+
+**common**
+
+RepoList
+
+UserList
+
+
+
