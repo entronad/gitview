@@ -157,3 +157,6 @@ UserList
 
 
 
+# API
+
+connection中的edges比直接nodes多了个cursor，cursor可以用在after参数中做分页用
