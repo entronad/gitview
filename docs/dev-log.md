@@ -160,3 +160,22 @@ UserList
 # API
 
 connection中的edges比直接nodes多了个cursor，cursor可以用在after参数中做分页用
+
+所有graphql的请求体为如下JSON
+
+```
+{
+  "query": "XXX"
+}
+
+XXX 为
+query {
+  id
+}
+或
+mutation(input: {}) {
+  id
+}
+将换行转义为字符后的字符串
+```
+
