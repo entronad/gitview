@@ -4,10 +4,13 @@ import {
   Text,
   View,
   Button,
+  StyleSheet,
+  Image
 } from 'react-native';
 import {
   StackNavigator,
   TabNavigator,
+  DrawerNavigator
 } from 'react-navigation';
 
 class HomeScreen extends React.Component {
@@ -85,7 +88,66 @@ MainScreenNavigator.navigationOptions = {
 
 const SimpleApp = StackNavigator({
   Home: {screen: MainScreenNavigator},
-  Chat: {screen: ChatScreen},
+  Chat: {screen: ChatScreen}
 });
 
-AppRegistry.registerComponent('playground', () => SimpleApp);
+///////////////////// DrawerNavigation ////////////////////////////
+class DrawerHomeScreen extends React.Component {
+  static navigationOptions = {
+    drawerLabel: 'Home',
+    drawerIcon: ({ tintColor }) => (
+      <Image
+        source={require('../test.png')}
+        style={[DrawerStyles.icon, {tintColor: tintColor}]}
+      />
+    ),
+  };
+
+  render() {
+    return (
+      <Button
+        onPress={() => this.props.navigation.navigate('Notifications')}
+        title="Go to notifications"
+      />
+    );
+  }
+}
+
+class DrawerNotificationsScreen extends React.Component {
+  static navigationOptions = {
+    drawerLabel: 'Notifications',
+    drawerIcon: ({ tintColor }) => (
+      <Image
+        source={require('../test.png')}
+        style={[DrawerStyles.icon, {tintColor: tintColor}]}
+      />
+    ),
+  };
+
+  render() {
+    return (
+      <Button
+        onPress={() => this.props.navigation.goBack()}
+        title="Go back home"
+      />
+    );
+  }
+}
+
+const DrawerStyles = StyleSheet.create({
+  icon: {
+    width: 24,
+    height: 24,
+  },
+});
+
+const DrawerApp = DrawerNavigator({
+  Home: {
+    screen: DrawerHomeScreen,
+  },
+  Notifications: {
+    screen: DrawerNotificationsScreen,
+  },
+});
+
+AppRegistry.registerComponent('playground', () => DrawerApp);
