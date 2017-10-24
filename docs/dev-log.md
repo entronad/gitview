@@ -184,3 +184,7 @@ mutation(input: {}) {
 # 图标
 
 http://www.iconfont.cn/
+
+# 依赖
+
+react-navigation
