@@ -1,12 +1,13 @@
 import React from 'react';
 import {
-  View
+  View,
+  Text
 } from 'react-native'
 
 export default class Splash extends React.Component {
   render() {
     return (
-      <View>Splash</View>
+      <Text>Splash</Text>
     );
   }
 }

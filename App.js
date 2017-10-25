@@ -11,7 +11,7 @@ import Gitview from './src/router'
 export default class App extends React.Component {
   render() {
     return (
-      <Gitview onNavigationStateChange={null} />
+      <Gitview />
     );
   }
 }

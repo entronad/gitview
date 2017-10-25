@@ -1,12 +1,13 @@
 import React from 'react';
 import {
-  View
+  View,
+  Text
 } from 'react-native'
 
 export default class Welcome extends React.Component {
   render() {
     return (
-      <View>Welcome</View>
+      <Text>Welcome</Text>
     );
   }
 }
