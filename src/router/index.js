@@ -5,30 +5,33 @@ import {
   NavigationActions,
 } from 'react-navigation';
 
+import Welcome from '../components/Welcome';
 import Splash from '../components/Splash';
 import Login from '../components/Login';
-import Welcome from '../components/Welcome';
+import Main from '../components/Main';
 
 const Gitview = StackNavigator(
   {
+    Welcome: {
+      screen: Welcome,
+      navigationOptions: {
+        header: null,
+      }
+    },
     Splash: {
       screen: Splash,
       navigationOptions: {
         header: null,
-      },
+      }
     },
     Login: {
       screen: Login,
       navigationOptions: {
         header: null,
-      },
+      }
     },
-    Welcome: {
-      screen: Welcome,
-      navigationOptions: {
-        header: null,
-      },
-      path: 'welcome',
+    Main: {
+      screen: Main
     }
   }
 );

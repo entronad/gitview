@@ -1,4 +1,5 @@
 import React from 'react';
+import { AppRegistry } from 'react-native';
 import {
   Platform,
   StyleSheet,
@@ -8,10 +9,12 @@ import {
 
 import Gitview from './src/router'
 
-export default class App extends React.Component {
+class App extends React.Component {
   render() {
     return (
       <Gitview />
     );
   }
 }
+
+AppRegistry.registerComponent('gitview', () => App);

@@ -188,3 +188,11 @@ http://www.iconfont.cn/
 # 依赖
 
 react-navigation
+
+redux
+
+react-redux
+
+# 2017-10-31
+
+将初始化的逻辑移至app.js，index.js仅引入app.js脚本
