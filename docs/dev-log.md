@@ -196,3 +196,9 @@ react-redux
 # 2017-10-31
 
 将初始化的逻辑移至app.js，index.js仅引入app.js脚本
+
+# 2017-11-01
+
+按领域划分redux并作为整个项目的结构，每个领域中的组件和reducer等放在对应目录中
+
+先不要添加welcome的内容
