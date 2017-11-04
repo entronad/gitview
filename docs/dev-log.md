@@ -181,6 +181,14 @@ mutation(input: {}) {
 将换行转义为字符后的字符串
 ```
 
+ratelimit算法：
+
+单次查询节点数的限制：每个connection必须在first或last100以内，总计不超过500000个node
+
+查询每个connection算一次（不管要取first多少个node），合计多层嵌套后的总次数 / 100得到分数，每小时最多5000分
+
+
+
 # 图标
 
 http://www.iconfont.cn/
@@ -202,3 +210,11 @@ react-redux
 按领域划分redux并作为整个项目的结构，每个领域中的组件和reducer等放在对应目录中
 
 先不要添加welcome的内容
+
+# 2017-11-04
+
+第一版只上线explore和compare的功能，
+
+explore仅有搜索，搜索结果为列表，列表点击进入repo的总览页，可添加进比较
+
+compare 一进入是一个table，可多选，要比较的repo和要比较的项，点击进入图表
