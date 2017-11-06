@@ -145,4 +145,22 @@ query {
 }
 ```
 
-- ​
+- ​根据版本库循环返回星
+
+```
+query { 
+  repository(owner:"vuejs", name: "vue") {
+    stargazers(last: 100, before: "Y3Vyc29yOnYyOpIAzgYvQLk") {
+      totalCount
+      pageInfo {
+        startCursor
+        hasPreviousPage
+      }
+      edges {
+        starredAt
+      }
+    }
+  }
+}
+```
+
