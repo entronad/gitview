@@ -126,9 +126,13 @@ query {
 
 ```
 query { 
-  search(query: "vue", type: REPOSITORY, first: 10) { 
+  search(query: "vue", type: REPOSITORY, first: 10) {
+    repositoryCount
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
     edges {
-      cursor
       node {
         ... on Repository {
           id
@@ -145,7 +149,26 @@ query {
 }
 ```
 
-- ​根据版本库循环返回星
+- 根据版本库返回版本库详情
+
+```
+query { 
+  repository(owner:"vuejs", name: "vue") {
+    description
+    stargazers {
+      totalCount
+    }
+    watchers {
+      totalCount
+    }
+    forks {
+      totalCount
+    }
+  }
+}
+```
+
+- 根据版本库循环返回星
 
 ```
 query { 
