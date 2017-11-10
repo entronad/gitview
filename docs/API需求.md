@@ -101,24 +101,7 @@ user用户名、姓名、介绍、位置、头像
 
 - 登录获取access_token
 
-- 当前用户
 
-  返回 姓名、用户名、头像、简介、地理位置、follow数
-
-```
-query { 
-  viewer {
-    id
-    login
-    name
-    bio
-    location
-    followers {
-      totalCount
-    }
-  }
-}
-```
 
 - 根据关键字、排序方式搜索版本库
 

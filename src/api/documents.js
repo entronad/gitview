@@ -1,5 +1,5 @@
 export default {
-  querySearchRepos: { query, after } => `
+  querySearchRepos: ({ query, after }) => `
     query { 
       search(query: "${query}", type: REPOSITORY, first: 100${after ? `, after: "${after}"` : null}) {
         repositoryCount
@@ -22,8 +22,8 @@ export default {
         }
       }
     }
-  `;
-  queryRepoOverview: { owner, name } => `
+  `,
+  queryRepoOverview: ({ owner, name }) => `
     query { 
       repository(owner:"${owner}", name: "${name}") {
         description
@@ -38,8 +38,8 @@ export default {
         }
       }
     }
-  `;
-  queryStargazers: { owner, name, before } => `
+  `,
+  queryStargazers: ({ owner, name, before }) => `
     query { 
       repository(owner:"${owner}", name: "${name}") {
         stargazers(last: 100${before ? `, after: "${before}"` : null}) {
@@ -54,5 +54,5 @@ export default {
         }
       }
     }
-  `;
+  `,
 }

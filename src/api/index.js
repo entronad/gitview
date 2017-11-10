@@ -1,4 +1,12 @@
 import { Buffer } from 'buffer';
+/**
+ * Please creat your owrn secret.js:
+ * 
+ * export const client = {
+ *   id: '',
+ *   secret: '',
+ * }
+ */
 import { client } from '../../secret';
 import documents from './documents';
 
@@ -20,17 +28,17 @@ const createCall = async (document, accessToken) => {
   const payload = JSON.stringify({
     query: document,
   })
-  return fetch(
+  const response = await fetch(
     graphqlUrl,
     {
-      'POST',
+      method: 'POST',
       headers: {
         Authorization: `token ${accessToken}`,
-        'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: payload,
     }
   );
+  return response.json();
 }
 
 export const login = async ({
@@ -55,10 +63,10 @@ export const login = async ({
     note: `${username} on Gitview`,
     footprint,
   });
-  return fetch(
+  const response = await fetch(
     loginUrl,
     {
-      'PUT',
+      method: 'PUT',
       headers: {
         Authorization: getBasicAuth({
           username,
@@ -68,6 +76,14 @@ export const login = async ({
       body: payload,
     }
   );
+  return response.json();
 }
 
-export const querySearchRepos = 
+export const querySearchRepos = ({ query, after }, accessToken) => 
+  createCall(documents.querySearchRepos({ query, after }), accessToken);
+
+export const queryRepoOverview = ({ owner, name }, accessToken) => 
+  createCall(documents.queryRepoOverview({ owner, name }), accessToken);
+
+export const queryStargazers = ({ owner, name, before }, accessToken) => 
+  createCall(documents.queryStargazers({ owner, name, before }), accessToken);
