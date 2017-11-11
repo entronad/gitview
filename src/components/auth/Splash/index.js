@@ -28,7 +28,9 @@ export default class Splash extends React.Component {
     const a = await aP;
     const b = await bP;
     const c = await cP;
-    this.setState({ a: a.toString, b: b.toString, c: c.toString });
+    console.log(a);
+    console.log(b);
+    console.log(c);
   }
   render() {
     return (

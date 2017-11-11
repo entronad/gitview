@@ -109,7 +109,7 @@ user用户名、姓名、介绍、位置、头像
 
 ```
 query { 
-  search(query: "vue", type: REPOSITORY, first: 10) {
+  search(query: "vue", type: REPOSITORY, first: 10, after: "") {
     repositoryCount
     pageInfo {
       hasNextPage
@@ -169,4 +169,34 @@ query {
   }
 }
 ```
+
+---
+
+异常处理：
+
+1. graphql内部错误
+
+   特征：status为200，返回的JSON中有一个errors
+
+   例子：body中没有query字符串；query字符串解析错误
+
+2. http错误
+
+   特征：status为对应错误码，返回JSON有message和documentation_url两个字段
+
+   例子：body的JSON解析错误；token无效等
+
+api方法在任何情况下，都返回resolve的promise，其value为一个名为response的对象，包含status和body两个字段
+
+所返回的body是已经解析好的js对象
+
+如果一切正常就返回2XX，正常body，
+
+如果http错误就返回错误码，body仅有message
+
+如果网络发起异常，就返回499，body仅有e的message
+
+如果graphql内部错误，就返回599，body的message放errors的message的拼接
+
+如果解析json错误，返回599，body的message放e的message
 

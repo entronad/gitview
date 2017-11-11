@@ -1,7 +1,7 @@
 export default {
   querySearchRepos: ({ query, after }) => `
     query { 
-      search(query: "${query}", type: REPOSITORY, first: 100${after ? `, after: "${after}"` : null}) {
+      search(query: "${query}", type: REPOSITORY, first: 100${after ? `, after: "${after}"` : ''}) {
         repositoryCount
         pageInfo {
           hasNextPage
@@ -42,7 +42,7 @@ export default {
   queryStargazers: ({ owner, name, before }) => `
     query { 
       repository(owner:"${owner}", name: "${name}") {
-        stargazers(last: 100${before ? `, after: "${before}"` : null}) {
+        stargazers(last: 100${before ? `, after: "${before}"` : ''}) {
           totalCount
           pageInfo {
             startCursor

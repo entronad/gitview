@@ -10,8 +10,13 @@ import { Buffer } from 'buffer';
 import { client } from '../../secret';
 import documents from './documents';
 
-const loginUrl = `https://api.github.com/authorizations/clients/${client.id}`;
-const graphqlUrl = 'https://api.github.com/graphql';
+const LOGIN_URL = `https://api.github.com/authorizations/clients/${client.id}`;
+const GRAPHQL_URL = 'https://api.github.com/graphql';
+
+const MY_STATUS = {
+  NET_ERROR: 499,
+  GRAPHQL_ERROR: 599,
+};
 
 const getBasicAuth = ({
   username,
@@ -27,18 +32,62 @@ const getBasicAuth = ({
 const createCall = async (document, accessToken) => {
   const payload = JSON.stringify({
     query: document,
-  })
-  const response = await fetch(
-    graphqlUrl,
-    {
-      method: 'POST',
-      headers: {
-        Authorization: `token ${accessToken}`,
+  });
+  const response = {}; 
+  try {
+    response = await fetch(
+      GRAPHQL_URL,
+      {
+        method: 'POST',
+        headers: {
+          Authorization: `token ${accessToken}`,
+        },
+        body: payload,
+      }
+    );
+  } catch (e) {
+    return {
+      status: MY_STATUS.NET_ERROR,
+      ok: false,
+      body: {
+        message: e.message,
       },
-      body: payload,
+    };
+  }
+  const body = {};
+  try {
+    body = await response.json();
+  } catch (e) {
+    return {
+      status: MY_STATUS.GRAPHQL_ERROR,
+      ok: response.ok,
+      body: {
+        message: e.message,
+      },
+    };
+  }
+  if (!response.ok) {
+    return {
+      status: response.status,
+      ok: response.ok,
+      body: {
+        message: body.message,
+      }
+    };
+  }
+  return body.data
+    ? {
+      status: response.status,
+      ok: response.ok,
+      body: body.data,
     }
-  );
-  return response.json();
+    : {
+      status: MY_STATUS.GRAPHQL_ERROR,
+      ok: false,
+      body: {
+        message: body.errors[0].message
+      }
+    };
 }
 
 export const login = async ({
@@ -64,7 +113,7 @@ export const login = async ({
     footprint,
   });
   const response = await fetch(
-    loginUrl,
+    LOGIN_URL,
     {
       method: 'PUT',
       headers: {
