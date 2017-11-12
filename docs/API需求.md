@@ -200,3 +200,30 @@ api方法在任何情况下，都返回resolve的promise，其value为一个名�
 
 如果解析json错误，返回599，body的message放e的message
 
+结果：
+
+```
+正常
+{ status: 200,
+  ok: true,
+  body: 
+   { repository: 
+      { description: 'A progressive, incrementally-adoptable JavaScript framework for building UI on the web.',
+        stargazers: { totalCount: 73396 },
+        watchers: { totalCount: 4034 },
+        forks: { totalCount: 10497 } } } }
+
+断网
+{ status: 499,
+  ok: false,
+  body: { message: 'Network request failed' } }
+
+写错端点
+{ status: 404, ok: false, body: { message: 'Not Found' } }
+
+document写错
+{ status: 599,
+  ok: false,
+  body: { message: 'Parse error on "quer" (IDENTIFIER) at [2, 5]' } }
+```
+

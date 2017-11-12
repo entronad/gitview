@@ -33,7 +33,7 @@ const createCall = async (document, accessToken) => {
   const payload = JSON.stringify({
     query: document,
   });
-  const response = {}; 
+  let response; 
   try {
     response = await fetch(
       GRAPHQL_URL,
@@ -54,12 +54,12 @@ const createCall = async (document, accessToken) => {
       },
     };
   }
-  const body = {};
+  let body;
   try {
     body = await response.json();
   } catch (e) {
     return {
-      status: MY_STATUS.GRAPHQL_ERROR,
+      status: MY_STATUS.NET_ERROR,
       ok: response.ok,
       body: {
         message: e.message,
@@ -112,20 +112,56 @@ export const login = async ({
     note: `${username} on Gitview`,
     footprint,
   });
-  const response = await fetch(
-    LOGIN_URL,
-    {
-      method: 'PUT',
-      headers: {
-        Authorization: getBasicAuth({
-          username,
-          password,
-        }),
+  let response;
+  try {
+    response = await fetch(
+      LOGIN_URL,
+      {
+        method: 'PUT',
+        headers: {
+          Authorization: getBasicAuth({
+            username,
+            password,
+          }),
+        },
+        body: payload,
+      }
+    );
+  } catch (e) {
+    return {
+      status: MY_STATUS.NET_ERROR,
+      ok: false,
+      body: {
+        message: e.message,
       },
-      body: payload,
-    }
-  );
-  return response.json();
+    };
+  }
+  let body;
+  try {
+    body = await response.json();
+  } catch (e) {
+    return {
+      status: MY_STATUS.NET_ERROR,
+      ok: response.ok,
+      body: {
+        message: e.message,
+      },
+    };
+  }
+  if (!response.ok) {
+    return {
+      status: response.status,
+      ok: response.ok,
+      body: {
+        message: body.message,
+      }
+    };
+  }
+  return {
+    status: response.status,
+    ok: response.ok,
+    body,
+  };
 }
 
 export const querySearchRepos = ({ query, after }, accessToken) => 
