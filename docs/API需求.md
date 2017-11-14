@@ -198,7 +198,7 @@ api方法在任何情况下，都返回resolve的promise，其value为一个名�
 
 如果graphql内部错误，就返回599，body的message放errors的message的拼接
 
-如果解析json错误，返回599，body的message放e的message
+如果解析json错误，返回499，body的message放e的message
 
 结果：
 
