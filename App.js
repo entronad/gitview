@@ -6,13 +6,17 @@ import {
   Text,
   View
 } from 'react-native';
+import { Provider } from 'react-redux';
 
-import Gitview from './src/router'
+import Gitview from './src/router';
+import store from './src/store';
 
 class App extends React.Component {
   render() {
     return (
-      <Gitview />
+      <Provider store={store}>
+        <Gitview />
+      </Provider>
     );
   }
 }

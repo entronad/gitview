@@ -9,7 +9,7 @@ export const initalState = {
   errorMessage: null,
 }
 
-export const authReducer = (state = initalState, action = {}) => {
+export default (state = initalState, action = {}) => {
   switch (action.type) {
     case LOGIN.PENDING:
       return {
