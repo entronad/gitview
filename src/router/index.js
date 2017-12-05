@@ -12,19 +12,19 @@ import Main from '../components/auth/Main';
 
 const Gitview = StackNavigator(
   {
-    splash: {
+    Splash: {
       screen: Splash,
       navigationOptions: {
         header: null,
       },
     },
-    login: {
+    Login: {
       screen: Login,
       navigationOptions: {
         header: null,
       },
     },
-    main: {
+    Main: {
       screen: Main,
     },
   },

@@ -218,3 +218,13 @@ react-redux
 explore仅有搜索，搜索结果为列表，列表点击进入repo的总览页，可添加进比较
 
 compare 一进入是一个table，可多选，要比较的repo和要比较的项，点击进入图表
+
+# 2017-12-05
+
+**auth逻辑**
+
+进入应用时状态中有是否authorized，
+
+第一个页面是splash，如果authorized就reset路由栈，进入main
+
+反之进入login

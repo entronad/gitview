@@ -4,6 +4,7 @@ import {
   Image,
   StatusBar,
 } from 'react-native';
+import { resetNavigationTo } from '../../../utils'
 import {
   querySearchRepos,
   queryRepoOverview,
@@ -12,6 +13,10 @@ import {
 import styled from 'styled-components/native';
 import background from './background.png';
 
+const mapStateToProps = state => ({
+  authorized: state.auth.authorized,
+})
+
 const SplashImage = styled.Image`
   width: 100%;
   height: 100%;
@@ -19,14 +24,12 @@ const SplashImage = styled.Image`
 `;
 
 export default class Splash extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      
-    }
-  }
   componentDidMount() {
-
+    if (this.props.authorized) {
+      resetNavigationTo('Main', this.props.navigation);
+    } else {
+      resetNavigationTo('Login', this.props.navigation);
+    }
   }
   render() {
     return (
