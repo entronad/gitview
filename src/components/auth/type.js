@@ -1,3 +1,3 @@
-import { createActionSet } from 'utils';
+import { createActionSet } from '../../utils';
 
 export const LOGIN = createActionSet('LOGIN');

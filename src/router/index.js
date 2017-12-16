@@ -29,7 +29,7 @@ const Gitview = StackNavigator(
     },
   },
   {
-    initialRouteName: 'splash',
+    initialRouteName: 'Splash',
   }
 );
 

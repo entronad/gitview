@@ -15,3 +15,10 @@ export const resetNavigationTo = (routeName, navigation) => {
 
   navigation.dispatch(resetAction);
 };
+
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+export const ensureDelay = (delayed, ms) =>
+  Promise
+    .all([delayed, sleep(ms)])
+    .then(([data]) => data);

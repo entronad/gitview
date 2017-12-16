@@ -4,7 +4,8 @@ import {
   Image,
   StatusBar,
 } from 'react-native';
-import { resetNavigationTo } from '../../../utils'
+import { connect } from 'react-redux';
+import { resetNavigationTo, ensureDelay } from '../../../utils'
 import {
   querySearchRepos,
   queryRepoOverview,
@@ -23,8 +24,12 @@ const SplashImage = styled.Image`
   resize-mode: contain;
 `;
 
-export default class Splash extends React.Component {
+class Splash extends React.Component {
   componentDidMount() {
+    console.log(this.props);
+    setTimeout(this.navigate, 2000);
+  }
+  navigate = () => {
     if (this.props.authorized) {
       resetNavigationTo('Main', this.props.navigation);
     } else {
@@ -39,3 +44,5 @@ export default class Splash extends React.Component {
     );
   }
 }
+
+export default connect(mapStateToProps)(Splash);
