@@ -26,7 +26,6 @@ const SplashImage = styled.Image`
 
 class Splash extends React.Component {
   componentDidMount() {
-    console.log(this.props);
     setTimeout(this.navigate, 2000);
   }
   navigate = () => {

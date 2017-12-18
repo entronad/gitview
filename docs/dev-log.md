@@ -228,3 +228,7 @@ compare 一进入是一个table，可多选，要比较的repo和要比较的项
 第一个页面是splash，如果authorized就reset路由栈，进入main
 
 反之进入login
+
+# 2017-12-18
+
+按照https://reactnavigation.org/docs/guides/redux规划了一下导航，包括物理后退键

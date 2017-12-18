@@ -1,7 +1,8 @@
 import React from 'react';
 import {
   View,
-  Text
+  Text,
+  Button,
 } from 'react-native'
 import { connect } from 'react-redux';
 
@@ -10,6 +11,9 @@ const mapStateToProps = state => ({
 })
 
 class Login extends React.Component {
+  nav = () => {
+    this.props.navigation.navigate('Main');
+  }
   render() {
     this.props.dispatch({
       type: 'LOGIN_SUCCESS',
@@ -17,9 +21,11 @@ class Login extends React.Component {
         accessToken: 'response.body.token',
       }
     });
-    console.log('** login');
     return (
-      <Text>Login</Text>
+      <View>
+        <Text>Login</Text>
+        <Button onPress={this.nav} title={'nav'}/>
+      </ View>
     );
   }
 }
