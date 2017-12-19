@@ -232,3 +232,7 @@ compare 一进入是一个table，可多选，要比较的repo和要比较的项
 # 2017-12-18
 
 按照https://reactnavigation.org/docs/guides/redux规划了一下导航，包括物理后退键
+
+# 2017-12-19
+
+asyncStorage 要封装成promise用

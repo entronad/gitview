@@ -1,7 +1,20 @@
+import { AsyncStorage } from 'react-native';
 import {
+  READ_ACCESS_TOKEN,
   LOGIN,
 } from './type';
 import { login as loginApi } from '../../api';
+
+export const readAccessToken = () => {
+  return async dispatch => {
+    dispatch({ type: READ_ACCESS_TOKEN.PENDING });
+    try {
+      const accessToken = await 
+    } catch (error) {
+      
+    }
+  }
+}
 
 export const login = (loginInfo) => {
   return async dispatch => {
