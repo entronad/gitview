@@ -236,3 +236,11 @@ compare 一进入是一个table，可多选，要比较的repo和要比较的项
 # 2017-12-19
 
 asyncStorage 要封装成promise用
+
+# 2017-12-10
+
+https://www.npmjs.com/package/babel-plugin-module-resolver
+
+用babel-plugin-module-resolver简化模块引用
+
+eslint也需要配一下

@@ -8,8 +8,8 @@ import {
 } from 'react-native';
 import { Provider } from 'react-redux';
 
-import Navigator from './src/navigator';
-import store from './src/store';
+import AppNavigator from 'components/nav/AppNavigator';
+import store from 'store';
 
 console.log(' ******************************* app script');
 
@@ -21,7 +21,7 @@ class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <Navigator />
+        <AppNavigator />
       </Provider>
     );
   }

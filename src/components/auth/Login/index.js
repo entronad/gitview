@@ -15,12 +15,12 @@ class Login extends React.Component {
     this.props.navigation.navigate('Main');
   }
   render() {
-    this.props.dispatch({
-      type: 'LOGIN_SUCCESS',
-      payload: {
-        accessToken: 'response.body.token',
-      }
-    });
+    // this.props.dispatch({
+    //   type: 'LOGIN_SUCCESS',
+    //   payload: {
+    //     accessToken: 'response.body.token',
+    //   }
+    // });
     return (
       <View>
         <Text>Login</Text>

@@ -1,22 +1,27 @@
 import React from 'react';
 import {
-  View,
-  Image,
   StatusBar,
 } from 'react-native';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { resetNavigationTo, ensureDelay } from '../../../utils'
-import {
-  querySearchRepos,
-  queryRepoOverview,
-  queryStargazers,
-} from '../../../api';
 import styled from 'styled-components/native';
+import { splash, readAccessToken } from '../action';
+import { resetNavigationTo } from 'utils';
 import background from './background.png';
 
 const mapStateToProps = state => ({
+  splashFinished: state.auth.splashFinished,
+  accessTokenRead: state.auth.accessTokenRead,
+
   authorized: state.auth.authorized,
 })
+const mapDispatchToProps = dispatch => bindActionCreators(
+  {
+    splash,
+    readAccessToken,
+  },
+  dispatch
+);
 
 const SplashImage = styled.Image`
   width: 100%;
@@ -25,8 +30,21 @@ const SplashImage = styled.Image`
 `;
 
 class Splash extends React.Component {
+  constructor(props) {
+    super(props);
+    // Splash 一被构造就开始读取 accessToken
+    console.log('splash construc')
+    this.props.readAccessToken();
+  }
   componentDidMount() {
-    setTimeout(this.navigate, 2000);
+    // 组件渲染完毕后延时2s
+    this.props.splash(2000);
+  }
+  componentDidUpdate() {
+    // 在每次state变化后监听是否要跳转了
+    if (this.props.splashFinished && this.props.accessTokenRead) {
+      this.navigate();
+    }
   }
   navigate = () => {
     if (this.props.authorized) {
@@ -44,4 +62,4 @@ class Splash extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(Splash);
+export default connect(mapStateToProps, mapDispatchToProps)(Splash);

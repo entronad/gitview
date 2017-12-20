@@ -1,6 +1,7 @@
 import {
   READ_ACCESS_TOKEN,
   LOGIN,
+  FINISH_SPLASH,
 } from './type';
 
 export const initalState = {
@@ -17,24 +18,30 @@ export const initalState = {
 export default (state = initalState, action = {}) => {
   switch (action.type) {
     case READ_ACCESS_TOKEN.PENDING:
-    return {
-      ...state,
-      accessTokenRead: false,
-    };
+      return {
+        ...state,
+        accessTokenRead: false,
+      };
     case READ_ACCESS_TOKEN.SUCCESS:
-    return {
-      ...state,
-      accessTokenRead: true,
-      authorized: true,
-      accessToken: action.payload.accessToken,
-    };
+      return {
+        ...state,
+        accessTokenRead: true,
+        authorized: true,
+        accessToken: action.payload.accessToken,
+      };
     case READ_ACCESS_TOKEN.ERROR:
-    return {
-      ...state,
-      accessTokenRead: true,
-      authorized: false,
-      errorMessage: action.payload.errorMessage,
-    };
+      return {
+        ...state,
+        accessTokenRead: true,
+        authorized: false,
+        errorMessage: action.payload.errorMessage,
+      };
+
+    case FINISH_SPLASH:
+      return {
+        ...state,
+        splashFinished: true,
+      };
 
     case LOGIN.PENDING:
       return {

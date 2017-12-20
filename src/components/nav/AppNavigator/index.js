@@ -10,11 +10,11 @@ import {
 import { connect } from 'react-redux';
 
 
-import Splash from '../components/auth/Splash';
-import Login from '../components/auth/Login';
-import Main from '../components/auth/Main';
+import Splash from 'components/auth/Splash';
+import Login from 'components/auth/Login';
+import Main from 'components/auth/Main';
 
-export const AppNavigator = StackNavigator(
+export const RootNavigator = StackNavigator(
   {
     Splash: {
       screen: Splash,
@@ -32,12 +32,12 @@ export const AppNavigator = StackNavigator(
       screen: Main,
     },
   },
-  // {
-  //   initialRouteName: 'Splash',
-  // }
+  {
+    initialRouteName: 'Splash',
+  }
 );
 
-class AppNavigatorWithState extends React.Component {
+class AppNavigator extends React.Component {
   componentDidMount() {
     BackHandler.addEventListener("hardwareBackPress", this.onBackPress);
   }
@@ -54,7 +54,7 @@ class AppNavigatorWithState extends React.Component {
   };
   render() {
     return (
-      <AppNavigator navigation={addNavigationHelpers({
+      <RootNavigator navigation={addNavigationHelpers({
         dispatch: this.props.dispatch,
         state: this.props.nav,
       })} />
@@ -66,4 +66,4 @@ const mapStateToProps = (state) => ({
   nav: state.nav
 });
 
-export default connect(mapStateToProps)(AppNavigatorWithState);
+export default connect(mapStateToProps)(AppNavigator);
