@@ -33,16 +33,15 @@ class Splash extends React.Component {
   constructor(props) {
     super(props);
     // Splash 一被构造就开始读取 accessToken
-    console.log('splash construc')
     this.props.readAccessToken();
   }
   componentDidMount() {
     // 组件渲染完毕后延时2s
     this.props.splash(2000);
   }
-  componentDidUpdate() {
+  componentWillUpdate(nextProps, nextState) {
     // 在每次state变化后监听是否要跳转了
-    if (this.props.splashFinished && this.props.accessTokenRead) {
+    if (nextProps.splashFinished && nextProps.accessTokenRead) {
       this.navigate();
     }
   }

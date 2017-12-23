@@ -2,6 +2,7 @@ import {
   READ_ACCESS_TOKEN,
   LOGIN,
   FINISH_SPLASH,
+  LOGOUT,
 } from './type';
 
 export const initalState = {
@@ -62,6 +63,14 @@ export default (state = initalState, action = {}) => {
         authorized: false,
         errorMessage: action.payload.errorMessage,
       };
+    
+    case LOGOUT.SUCCESS:
+      return {
+        ...state,
+        authorized: false,
+        accessToken: null,
+      };
+
     default:
       return state;
   }

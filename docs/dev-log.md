@@ -244,3 +244,9 @@ https://www.npmjs.com/package/babel-plugin-module-resolver
 用babel-plugin-module-resolver简化模块引用
 
 eslint也需要配一下
+
+# 2017-12-23
+
+使用antd-mobile
+
+使用 [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) 按需加载

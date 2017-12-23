@@ -4,6 +4,7 @@ import {
   READ_ACCESS_TOKEN,
   LOGIN,
   FINISH_SPLASH,
+  LOGOUT,
 } from './type';
 import { login as loginApi } from 'api';
 
@@ -71,3 +72,16 @@ export const login = (loginInfo) => {
     return response;
   };
 };
+
+export const logout = () => {
+  return async dispatch => {
+    try {
+      await AsyncStorage.removeItem(AUTH_ACCESS_TOKEN);
+      dispatch({
+        type: LOGOUT.SUCCESS,
+      });
+    } catch (error) {
+      console.error('++++++ logout error ++++++');
+    }
+  }
+}
