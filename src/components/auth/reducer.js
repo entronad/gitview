@@ -18,6 +18,7 @@ export const initalState = {
 
 export default (state = initalState, action = {}) => {
   switch (action.type) {
+    // 读取accessToken
     case READ_ACCESS_TOKEN.PENDING:
       return {
         ...state,
@@ -37,13 +38,15 @@ export default (state = initalState, action = {}) => {
         authorized: false,
         errorMessage: action.payload.errorMessage,
       };
-
+    
+    // 显示闪屏
     case FINISH_SPLASH:
       return {
         ...state,
         splashFinished: true,
       };
-
+    
+    // 登录
     case LOGIN.PENDING:
       return {
         ...state,
@@ -64,6 +67,7 @@ export default (state = initalState, action = {}) => {
         errorMessage: action.payload.errorMessage,
       };
     
+    // 登出
     case LOGOUT.SUCCESS:
       return {
         ...state,

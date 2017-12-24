@@ -10,6 +10,7 @@ import { Button, WhiteSpace, WingBlank, InputItem, List, ActivityIndicator } fro
 import styled from 'styled-components/native';
 import { login as loginAction } from '../action';
 import { AUTH_ACCESS_TOKEN } from 'constants/storageKeys';
+import { resetNavigationTo } from 'utils';
 
 const RootView = styled.View`
   background: white;
@@ -58,14 +59,14 @@ class Login extends React.Component {
       password: null,
     }
   }
-  componentWillUpdate() {
-    if (this.props.authorized) {
-      AsyncStorage.setItem(AUTH_ACCESS_TOKEN, this.props.accessToken);
+  componentWillUpdate(nextProps, nextState) {
+    if (nextProps.authorized) {
+      AsyncStorage.setItem(AUTH_ACCESS_TOKEN, nextProps.accessToken);
       this.navigate();
     }
   }
   navigate = () => {
-    this.props.navigation.navigate('Main');
+    resetNavigationTo('Main', this.props.navigation);
   }
   login = () => {
     this.props.loginAction({

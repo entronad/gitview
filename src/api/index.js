@@ -22,11 +22,8 @@ const getBasicAuth = ({
   username,
   password,
 }) => {
-  const authBuffer = new Buffer(
-    `${username}:${password}`,
-    'base64'
-  );
-  return `Basic ${authBuffer.toString()}`;
+  const authBuffer = new Buffer(`${username}:${password}`);
+  return `Basic ${authBuffer.toString('base64')}`;
 };
 
 const createCall = async (document, accessToken) => {
