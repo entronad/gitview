@@ -1,4 +1,7 @@
-# Gitvew
+![0](./docs/README_0.png)
+
+# Gitvew -- 极视
+
 “ GitHub 数据可视化客户端 ”
 
 **预期功能**
