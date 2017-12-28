@@ -30,6 +30,9 @@ const SplashImage = styled.Image`
 `;
 
 class Splash extends React.Component {
+  static navigationOptions: {
+    header: null,
+  }
   constructor(props) {
     super(props);
     // Splash 一被构造就开始读取 accessToken

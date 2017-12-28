@@ -11,7 +11,21 @@ App(stack)
     `-- Local
 ```
 
+项目结构
 
+```
+components
++-- nav
+|   `-- AppNavigator
+|   auth
++-- Splash
+|   `-- Login
++-- main
+    +-- Dashboard
+    +-- Explore
+    +-- Visual
+    `-- Local
+```
 
 # 功能：
 

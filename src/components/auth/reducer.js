@@ -5,7 +5,7 @@ import {
   LOGOUT,
 } from './type';
 
-export const initalState = {
+const initalState = {
   authorized: false,
   accessToken: null,
   errorMessage: null,

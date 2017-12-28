@@ -12,25 +12,30 @@ import { connect } from 'react-redux';
 
 import Splash from 'components/auth/Splash';
 import Login from 'components/auth/Login';
-import Main from 'components/auth/Main';
 
+import Dashboard from 'components/main/Dashboard';
+import Explore from 'components/main/Explore';
+import Visual from 'components/main/Visual';
+import Local from 'components/main/Local';
+
+const MainNavigator = TabNavigator(
+  {
+    Dashboard: { screen: Dashboard },
+    Explore: { screen: Explore },
+    Visual: { screen: Visual },
+    Local: { screen: Local },
+  },
+  {
+    tabBarComponent: TabBarBottom,
+  }
+);
+
+// navigationOptions 放在screen内部
 export const RootNavigator = StackNavigator(
   {
-    Splash: {
-      screen: Splash,
-      navigationOptions: {
-        header: null,
-      },
-    },
-    Login: {
-      screen: Login,
-      navigationOptions: {
-        header: null,
-      },
-    },
-    Main: {
-      screen: Main,
-    },
+    Splash: { screen: Splash },
+    Login: { screen: Login },
+    Main: { screen: MainNavigator },
   },
   {
     initialRouteName: 'Splash',

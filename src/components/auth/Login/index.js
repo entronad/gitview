@@ -38,22 +38,11 @@ const mapDispatchToProps = dispatch => bindActionCreators(
 );
 
 class Login extends React.Component {
+  static navigationOptions: {
+    header: null,
+  }
   constructor(props) {
     super(props);
-    // const ast = async () => {
-    //   await AsyncStorage.setItem('aaa','bbb');
-    //   try {
-    //     await AsyncStorage.removeItem('aaa')
-    //   } catch (error) {
-    //     console.log(e)
-    //   }
-    //   try {
-    //     await AsyncStorage.removeItem('aaa')
-    //   } catch (error) {
-    //     console.log(e)
-    //   }
-    // }
-    // ast()
     this.state = {
       username: null,
       password: null,
