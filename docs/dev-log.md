@@ -279,3 +279,50 @@ eslint也需要配一下
 使用antd-mobile
 
 使用 [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) 按需加载
+
+# 2017-12-19
+
+eslint:
+
+安装babel-eslint https://www.npmjs.com/package/babel-eslint
+
+安装eslint-config-airbnb https://www.npmjs.com/package/eslint-config-airbnb
+
+.eslintrc
+
+```
+{
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "rules": {
+    "class-methods-use-this": "warn",
+    "comma-dangle": "off",
+    "global-require": "off",
+    "import/no-dynamic-require": "off",
+    "import/no-extraneous-dependencies": "off",
+    "import/prefer-default-export": "off",
+    "max-len": "warn",
+    "no-console": [
+      "warn",
+      {
+        "allow": [
+          "warn",
+          "error"
+        ]
+      }
+    ],
+    "no-else-return": "off",
+    "no-param-reassign": "off",
+    "no-underscore-dangle": "off",
+    "no-unused-vars": "warn",
+    "no-use-before-define": "warn",
+    "react/forbid-prop-types": "warn",
+    "react/no-unused-prop-types": "warn",
+    "react/prefer-stateless-function": "off",
+    "react/prop-types": "warn",
+    "react/self-closing-comp": "warn",
+    "jsx-a11y/no-static-element-interactions": "off"
+  }
+}
+```
+
