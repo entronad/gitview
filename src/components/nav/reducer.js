@@ -1,11 +1,9 @@
-import { RootNavigator } from './AppNavigator'
+import { RootNavigator } from './AppNavigator';
 
-const initialState = RootNavigator.router.getStateForAction(
-  RootNavigator.router.getActionForPathAndParams('Splash')
-);
+const initialAction = RootNavigator.router.getActionForPathAndParams('Splash');
+const initialState = RootNavigator.router.getStateForAction(initialAction);
 
 export default (state = initialState, action = {}) => {
   const nextState = RootNavigator.router.getStateForAction(action, state);
-
   return nextState || state;
 };

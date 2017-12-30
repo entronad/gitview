@@ -8,18 +8,18 @@ import { connect } from 'react-redux';
 import { Icon } from 'antd-mobile';
 
 const mapStateToProps = state => ({
-  
-})
+
+});
 const mapDispatchToProps = dispatch => bindActionCreators(
   {
-    
+
   },
-  dispatch
+  dispatch,
 );
 
 class Explore extends React.Component {
   static navigationOptions: {
-    tabBarIcon: () => (<Icon type="&#xe7cf;" />),
+    // tabBarIcon: () => (<Icon type="&#xe7cf;" />),
     tabBarLabel: '探索',
   }
   render() {

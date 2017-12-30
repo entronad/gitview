@@ -8,5 +8,5 @@ const middlewares = [
 
 export default createStore(
   reducer,
-  applyMiddleware(...middlewares)
+  applyMiddleware(...middlewares),
 );

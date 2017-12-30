@@ -1,5 +1,6 @@
 import React from 'react';
 import { BackHandler } from 'react-native';
+import PropTypes from 'prop-types';
 import {
   StackNavigator,
   TabNavigator,
@@ -27,7 +28,7 @@ const MainNavigator = TabNavigator(
   },
   {
     tabBarComponent: TabBarBottom,
-  }
+  },
 );
 
 // navigationOptions 放在screen内部
@@ -39,15 +40,24 @@ export const RootNavigator = StackNavigator(
   },
   {
     initialRouteName: 'Splash',
-  }
+  },
 );
 
+const mapStateToProps = state => ({
+  nav: state.nav,
+});
+
 class AppNavigator extends React.Component {
+  static propTypes = {
+    nav: PropTypes.object.isRequired,
+
+    dispatch: PropTypes.object.isRequired,
+  }
   componentDidMount() {
-    BackHandler.addEventListener("hardwareBackPress", this.onBackPress);
+    BackHandler.addEventListener('hardwareBackPress', this.onBackPress);
   }
   componentWillUnmount() {
-    BackHandler.removeEventListener("hardwareBackPress", this.onBackPress);
+    BackHandler.removeEventListener('hardwareBackPress', this.onBackPress);
   }
   onBackPress = () => {
     const { dispatch, nav } = this.props;
@@ -59,16 +69,14 @@ class AppNavigator extends React.Component {
   };
   render() {
     return (
-      <RootNavigator navigation={addNavigationHelpers({
-        dispatch: this.props.dispatch,
-        state: this.props.nav,
-      })} />
+      <RootNavigator
+        navigation={addNavigationHelpers({
+          dispatch: this.props.dispatch,
+          state: this.props.nav,
+        })}
+      />
     );
   }
 }
-
-const mapStateToProps = (state) => ({
-  nav: state.nav
-});
 
 export default connect(mapStateToProps)(AppNavigator);

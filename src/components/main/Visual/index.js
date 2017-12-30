@@ -8,18 +8,18 @@ import { connect } from 'react-redux';
 import { Icon } from 'antd-mobile';
 
 const mapStateToProps = state => ({
-  
-})
+
+});
 const mapDispatchToProps = dispatch => bindActionCreators(
   {
-    
+
   },
-  dispatch
+  dispatch,
 );
 
 class Visual extends React.Component {
   static navigationOptions: {
-    tabBarIcon: () => (<Icon type="&#xe61a;" />),
+    // tabBarIcon: () => (<Icon type="&#xe61a;" />),
     tabBarLabel: '数据',
   }
   render() {

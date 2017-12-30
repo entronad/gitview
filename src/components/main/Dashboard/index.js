@@ -8,18 +8,18 @@ import { connect } from 'react-redux';
 import { Icon } from 'antd-mobile';
 
 const mapStateToProps = state => ({
-  
-})
+
+});
 const mapDispatchToProps = dispatch => bindActionCreators(
   {
-    
+
   },
-  dispatch
+  dispatch,
 );
 
 class Dashboard extends React.Component {
   static navigationOptions: {
-    tabBarIcon: () => (<Icon type="&#xe605;" />),
+    // tabBarIcon: <Icon type="&#xe605;" />,
     tabBarLabel: '我的',
   }
   render() {

@@ -1,103 +1,97 @@
 import { AsyncStorage } from 'react-native';
 import { Toast } from 'antd-mobile';
 import { AUTH_ACCESS_TOKEN } from 'constants/storageKeys';
+
+import { login as loginApi } from 'api';
 import {
   READ_ACCESS_TOKEN,
   LOGIN,
   FINISH_SPLASH,
   LOGOUT,
 } from './type';
-import { login as loginApi } from 'api';
 
-export const readAccessToken = () => {
-  return async dispatch => {
-    dispatch({ type: READ_ACCESS_TOKEN.PENDING });
-    let accessToken;
-    try {
-      accessToken = await AsyncStorage.getItem(AUTH_ACCESS_TOKEN);
-    } catch (error) {
-      Toast.fail(error.message);
-      dispatch({
-        type: READ_ACCESS_TOKEN.ERROR,
-        payload: {
-          errorMessage: error.message,
-        }
-      });
-      return accessToken;
-    }
-    if (accessToken) {
-      dispatch({
-        type: READ_ACCESS_TOKEN.SUCCESS,
-        payload: {
-          accessToken,
-        }
-      });
-      return accessToken;
-    }
+export const readAccessToken = () => async (dispatch) => {
+  dispatch({ type: READ_ACCESS_TOKEN.PENDING });
+  let accessToken;
+  try {
+    accessToken = await AsyncStorage.getItem(AUTH_ACCESS_TOKEN);
+  } catch (error) {
+    Toast.fail(error.message);
     dispatch({
       type: READ_ACCESS_TOKEN.ERROR,
       payload: {
-        errorMessage: 'accessToken 为空',
-      }
+        errorMessage: error.message,
+      },
     });
     return accessToken;
   }
-}
-
-export const splash = (ms) => {
-  return async dispatch => {
-    setTimeout(() => dispatch({
-      type: FINISH_SPLASH,
-    }), ms);
-  }
-}
-
-export const login = (loginInfo) => {
-  return async dispatch => {
-    dispatch({ type: LOGIN.PENDING });
-    const response = await loginApi(loginInfo);
-    if (response.ok) {
-      try {
-        // 登录成功后立刻写入storage中
-        await AsyncStorage.setItem(AUTH_ACCESS_TOKEN, response.body.token);
-        dispatch({
-          type: LOGIN.SUCCESS,
-          payload: {
-            accessToken: response.body.token,
-          }
-        });
-        return response;
-      } catch (error) {
-        Toast.fail(error.message);
-        dispatch({
-          type: LOGIN.ERROR,
-          payload: {
-            errorMessage: error.message,
-          }
-        });
-        return response;
-      }
-    }
-    Toast.fail(response.body.message);
+  if (accessToken) {
     dispatch({
-      type: LOGIN.ERROR,
+      type: READ_ACCESS_TOKEN.SUCCESS,
       payload: {
-        errorMessage: response.body.message,
-      }
+        accessToken,
+      },
     });
-    return response;
-  };
+    return accessToken;
+  }
+  dispatch({
+    type: READ_ACCESS_TOKEN.ERROR,
+    payload: {
+      errorMessage: 'accessToken 为空',
+    },
+  });
+  return accessToken;
 };
 
-export const logout = () => {
-  return async dispatch => {
+
+export const splash = ms => async (dispatch) => {
+  setTimeout(() => dispatch({
+    type: FINISH_SPLASH,
+  }), ms);
+};
+
+export const login = loginInfo => async (dispatch) => {
+  dispatch({ type: LOGIN.PENDING });
+  const response = await loginApi(loginInfo);
+  if (response.ok) {
     try {
-      await AsyncStorage.removeItem(AUTH_ACCESS_TOKEN);
+      // 登录成功后立刻写入storage中
+      await AsyncStorage.setItem(AUTH_ACCESS_TOKEN, response.body.token);
       dispatch({
-        type: LOGOUT.SUCCESS,
+        type: LOGIN.SUCCESS,
+        payload: {
+          accessToken: response.body.token,
+        },
       });
+      return response;
     } catch (error) {
-      Toast.fail('无法清除 accessToken');
+      Toast.fail(error.message);
+      dispatch({
+        type: LOGIN.ERROR,
+        payload: {
+          errorMessage: error.message,
+        },
+      });
+      return response;
     }
   }
-}
+  Toast.fail(response.body.message);
+  dispatch({
+    type: LOGIN.ERROR,
+    payload: {
+      errorMessage: response.body.message,
+    },
+  });
+  return response;
+};
+
+export const logout = () => async (dispatch) => {
+  try {
+    await AsyncStorage.removeItem(AUTH_ACCESS_TOKEN);
+    dispatch({
+      type: LOGOUT.SUCCESS,
+    });
+  } catch (error) {
+    Toast.fail('无法清除 accessToken');
+  }
+};

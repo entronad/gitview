@@ -1,26 +1,25 @@
 import React from 'react';
-import {
-  StatusBar,
-} from 'react-native';
+import { StatusBar } from 'react-native';
+import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import styled from 'styled-components/native';
-import { splash, readAccessToken } from '../action';
+
 import { resetNavigationTo } from 'utils';
+import { splash, readAccessToken } from '../action';
 import background from './background.png';
 
 const mapStateToProps = state => ({
   splashFinished: state.auth.splashFinished,
   accessTokenRead: state.auth.accessTokenRead,
-
   authorized: state.auth.authorized,
-})
+});
 const mapDispatchToProps = dispatch => bindActionCreators(
   {
     splash,
     readAccessToken,
   },
-  dispatch
+  dispatch,
 );
 
 const SplashImage = styled.Image`
@@ -30,7 +29,17 @@ const SplashImage = styled.Image`
 `;
 
 class Splash extends React.Component {
-  static navigationOptions: {
+  static propTypes = {
+    splashFinished: PropTypes.bool.isRequired,
+    accessTokenRead: PropTypes.bool.isRequired,
+    authorized: PropTypes.bool.isRequired,
+
+    splash: PropTypes.func.isRequired,
+    readAccessToken: PropTypes.func.isRequired,
+
+    navigation: PropTypes.object.isRequired,
+  }
+  static navigationOptions = {
     header: null,
   }
   constructor(props) {
@@ -58,8 +67,8 @@ class Splash extends React.Component {
   render() {
     return (
       <SplashImage source={background} >
-        <StatusBar hidden={true} />
-      </ SplashImage>
+        <StatusBar hidden />
+      </SplashImage>
     );
   }
 }

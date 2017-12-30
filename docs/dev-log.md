@@ -272,7 +272,11 @@ https://www.npmjs.com/package/babel-plugin-module-resolver
 
 用babel-plugin-module-resolver简化模块引用
 
-eslint也需要配一下
+eslint也需要配一下，使用
+
+```
+eslint-import-resolver-babel-module
+```
 
 # 2017-12-23
 

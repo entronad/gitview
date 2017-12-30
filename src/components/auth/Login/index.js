@@ -1,16 +1,21 @@
 import React from 'react';
-import {
-  AsyncStorage,
-  View,
-  Text,
-} from 'react-native'
+import { AsyncStorage } from 'react-native';
+import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Button, WhiteSpace, WingBlank, InputItem, List, ActivityIndicator } from 'antd-mobile';
+import {
+  Button,
+  WhiteSpace,
+  WingBlank,
+  InputItem,
+  List,
+  ActivityIndicator,
+} from 'antd-mobile';
 import styled from 'styled-components/native';
-import { login as loginAction } from '../action';
+
 import { AUTH_ACCESS_TOKEN } from 'constants/storageKeys';
 import { resetNavigationTo } from 'utils';
+import { login as loginAction } from '../action';
 
 const RootView = styled.View`
   background: white;
@@ -29,16 +34,25 @@ const mapStateToProps = state => ({
   authorized: state.auth.authorized,
   accessToken: state.auth.accessToken,
   logining: state.auth.logining,
-})
+});
 const mapDispatchToProps = dispatch => bindActionCreators(
   {
     loginAction,
   },
-  dispatch
+  dispatch,
 );
 
 class Login extends React.Component {
-  static navigationOptions: {
+  static propTypes = {
+    authorized: PropTypes.bool.isRequired,
+    accessToken: PropTypes.string.isRequired,
+    logining: PropTypes.bool.isRequired,
+
+    loginAction: PropTypes.func.isRequired,
+
+    navigation: PropTypes.object.isRequired,
+  }
+  static navigationOptions = {
     header: null,
   }
   constructor(props) {
@@ -46,22 +60,13 @@ class Login extends React.Component {
     this.state = {
       username: null,
       password: null,
-    }
+    };
   }
   componentWillUpdate(nextProps, nextState) {
     if (nextProps.authorized) {
       AsyncStorage.setItem(AUTH_ACCESS_TOKEN, nextProps.accessToken);
       this.navigate();
     }
-  }
-  navigate = () => {
-    resetNavigationTo('Main', this.props.navigation);
-  }
-  login = () => {
-    this.props.loginAction({
-      username: this.state.username,
-      password: this.state.password,
-    })
   }
   setUsername = (username) => {
     this.setState({
@@ -73,6 +78,15 @@ class Login extends React.Component {
       password,
     });
   }
+  login = () => {
+    this.props.loginAction({
+      username: this.state.username,
+      password: this.state.password,
+    });
+  }
+  navigate = () => {
+    resetNavigationTo('Main', this.props.navigation);
+  }
   render() {
     return (
       <RootView>
@@ -82,15 +96,19 @@ class Login extends React.Component {
               placeholder="GitHub账号"
               value={this.state.username}
               onChange={this.setUsername}
-            >账号:</InputItem>
+            >
+              账号:
+            </InputItem>
             <InputItem
               placeholder="GitHub登录密码"
               type="password"
               value={this.state.password}
               onChange={this.setPassword}
-            >密码:</InputItem>
+            >
+              密码:
+            </InputItem>
           </InputList>
-          <WhiteSpace size="xl"/>
+          <WhiteSpace size="xl" />
           <Button type="primary" onClick={this.login}>登录</Button>
         </Content>
         <ActivityIndicator
@@ -98,7 +116,7 @@ class Login extends React.Component {
           text="登录中..."
           animating={this.props.logining}
         />
-      </ RootView>
+      </RootView>
     );
   }
 }

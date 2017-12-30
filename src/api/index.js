@@ -1,7 +1,7 @@
 import { Buffer } from 'buffer';
 /**
  * Please creat your owrn secret.js:
- * 
+ *
  * export const client = {
  *   id: '',
  *   secret: '',
@@ -22,7 +22,7 @@ const getBasicAuth = ({
   username,
   password,
 }) => {
-  const authBuffer = new Buffer(`${username}:${password}`);
+  const authBuffer = Buffer.from(`${username}:${password}`);
   return `Basic ${authBuffer.toString('base64')}`;
 };
 
@@ -30,7 +30,7 @@ const createCall = async (document, accessToken) => {
   const payload = JSON.stringify({
     query: document,
   });
-  let response; 
+  let response;
   try {
     response = await fetch(
       GRAPHQL_URL,
@@ -85,7 +85,7 @@ const createCall = async (document, accessToken) => {
         message: body.errors[0].message
       }
     };
-}
+};
 
 export const login = async ({
   username,
@@ -95,16 +95,16 @@ export const login = async ({
   const payload = JSON.stringify({
     client_secret: client.secret,
     scopes: [
-    'user',
-    'repo',
-    'delete_repo',
-    'notifications',
-    'gist',
-    'admin:repo_hook',
-    'admin:org_hook',
-    'admin:org',
-    'admin:public_key',
-    'admin:gpg_key',
+      'user',
+      'repo',
+      'delete_repo',
+      'notifications',
+      'gist',
+      'admin:repo_hook',
+      'admin:org_hook',
+      'admin:org',
+      'admin:public_key',
+      'admin:gpg_key',
     ],
     note: `${username} on Gitview`,
     footprint,
@@ -159,13 +159,13 @@ export const login = async ({
     ok: response.ok,
     body,
   };
-}
+};
 
-export const querySearchRepos = ({ query, after }, accessToken) => 
+export const querySearchRepos = ({ query, after }, accessToken) =>
   createCall(documents.querySearchRepos({ query, after }), accessToken);
 
-export const queryRepoOverview = ({ owner, name }, accessToken) => 
+export const queryRepoOverview = ({ owner, name }, accessToken) =>
   createCall(documents.queryRepoOverview({ owner, name }), accessToken);
 
-export const queryStargazers = ({ owner, name, before }, accessToken) => 
+export const queryStargazers = ({ owner, name, before }, accessToken) =>
   createCall(documents.queryStargazers({ owner, name, before }), accessToken);
