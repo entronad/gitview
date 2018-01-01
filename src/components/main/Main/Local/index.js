@@ -18,8 +18,8 @@ const mapDispatchToProps = dispatch => bindActionCreators(
 );
 
 class Local extends React.Component {
-  static navigationOptions: {
-    // tabBarIcon: () => (<Icon type="&#xe606;" />),
+  static navigationOptions = {
+    tabBarIcon: () => (<Icon type="&#xe606;" />),
     tabBarLabel: '本地',
   }
   render() {

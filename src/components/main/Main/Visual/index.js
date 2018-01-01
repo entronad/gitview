@@ -17,18 +17,18 @@ const mapDispatchToProps = dispatch => bindActionCreators(
   dispatch,
 );
 
-class Explore extends React.Component {
-  static navigationOptions: {
-    // tabBarIcon: () => (<Icon type="&#xe7cf;" />),
-    tabBarLabel: '探索',
+class Visual extends React.Component {
+  static navigationOptions = {
+    tabBarIcon: () => (<Icon type="&#xe61a;" />),
+    tabBarLabel: '数据',
   }
   render() {
     return (
       <View>
-        <Text>Explore</Text>
+        <Text>Visual</Text>
       </View>
     );
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Explore);
+export default connect(mapStateToProps, mapDispatchToProps)(Visual);
