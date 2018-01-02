@@ -40,26 +40,26 @@ const createCall = async (document, accessToken) => {
           Authorization: `token ${accessToken}`,
         },
         body: payload,
-      }
+      },
     );
-  } catch (e) {
+  } catch (error) {
     return {
       status: MY_STATUS.NET_ERROR,
       ok: false,
       body: {
-        message: e.message,
+        message: error.message,
       },
     };
   }
   let body;
   try {
     body = await response.json();
-  } catch (e) {
+  } catch (error) {
     return {
       status: MY_STATUS.NET_ERROR,
       ok: response.ok,
       body: {
-        message: e.message,
+        message: error.message,
       },
     };
   }
@@ -69,7 +69,7 @@ const createCall = async (document, accessToken) => {
       ok: response.ok,
       body: {
         message: body.message,
-      }
+      },
     };
   }
   return body.data
@@ -82,15 +82,15 @@ const createCall = async (document, accessToken) => {
       status: MY_STATUS.GRAPHQL_ERROR,
       ok: false,
       body: {
-        message: body.errors[0].message
-      }
+        message: body.errors[0].message,
+      },
     };
 };
 
 export const login = async ({
   username,
   password,
-  footprint
+  footprint,
 }) => {
   const payload = JSON.stringify({
     client_secret: client.secret,
@@ -122,26 +122,26 @@ export const login = async ({
           }),
         },
         body: payload,
-      }
+      },
     );
-  } catch (e) {
+  } catch (error) {
     return {
       status: MY_STATUS.NET_ERROR,
       ok: false,
       body: {
-        message: e.message,
+        message: error.message,
       },
     };
   }
   let body;
   try {
     body = await response.json();
-  } catch (e) {
+  } catch (error) {
     return {
       status: MY_STATUS.NET_ERROR,
       ok: response.ok,
       body: {
-        message: e.message,
+        message: error.message,
       },
     };
   }
@@ -151,7 +151,7 @@ export const login = async ({
       ok: response.ok,
       body: {
         message: body.message,
-      }
+      },
     };
   }
   return {
