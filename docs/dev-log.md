@@ -1,32 +1,3 @@
-导航：
-
-```
-App(stack)
-+-- Splash
-+-- Login
-`-- Main(tab)
-    +-- Dashboard
-    +-- Explore
-    +-- Visual
-    `-- Local
-```
-
-项目结构
-
-```
-components
-+-- nav
-|   `-- AppNavigator
-|   auth
-+-- Splash
-|   `-- Login
-+-- main
-    +-- Dashboard
-    +-- Explore
-    +-- Visual
-    `-- Local
-```
-
 # 功能：
 
 explore

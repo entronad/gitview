@@ -3,36 +3,14 @@ import { BackHandler } from 'react-native';
 import PropTypes from 'prop-types';
 import {
   StackNavigator,
-  TabNavigator,
-  TabBarBottom,
   NavigationActions,
   addNavigationHelpers,
 } from 'react-navigation';
 import { connect } from 'react-redux';
 
-
 import Splash from 'components/auth/Splash';
 import Login from 'components/auth/Login';
-
-import Dashboard from 'components/main/Main/Dashboard';
-import Explore from 'components/main/Main/Explore';
-import Visual from 'components/main/Main/Visual';
-import Local from 'components/main/Main/Local';
 import Main from 'components/main/Main';
-
-const MainNavigator = TabNavigator(
-  {
-    Dashboard: { screen: Dashboard },
-    Explore: { screen: Explore },
-    Visual: { screen: Visual },
-    Local: { screen: Local },
-  },
-  {
-    tabBarComponent: TabBarBottom,
-    tabBarPosition: 'bottom',
-    swipeEnabled: false,
-  },
-);
 
 // navigationOptions 放在screen内部
 export const RootNavigator = StackNavigator(

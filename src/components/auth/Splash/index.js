@@ -22,6 +22,11 @@ const mapDispatchToProps = dispatch => bindActionCreators(
   dispatch,
 );
 
+const RootView = styled.View`
+  width: 100%;
+  height: 100%;
+`;
+
 const SplashImage = styled.Image`
   width: 100%;
   height: 100%;
@@ -66,9 +71,10 @@ class Splash extends React.Component {
   }
   render() {
     return (
-      <SplashImage source={background} >
+      <RootView>
         <StatusBar hidden />
-      </SplashImage>
+        <SplashImage source={background} />
+      </RootView>
     );
   }
 }

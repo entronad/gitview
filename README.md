@@ -12,18 +12,48 @@
 
 **技术栈**
 
-产品设计：墨刀
+ReactNative + Redux
 
-视图库：react-native
+- iconfont: 图标库，在 ReactNative 中可通过 unicode 方式使用
+- antd-mobile: Ant Design 在移动端的组件库
+- babel-plugin-module-resolver: 可自定义目录映射的 babel  插件
+- buffer: Node.js 中的 buffer 模块，为 Base64 加密使用
+- eslint-config-airbnb: airbnb 的 eslint 规则，具体调整见 eslintrc
+- react-navigation: 导航（路由）系统
+- redux-thunk: 异步action中间件
+- styled-components：参数化、模块化CSS方案
 
-导航：react-navigation
+**项目结构**
 
-状态管理：redux
+```
+components
++-- nav
+|   `-- AppNavigator
+|   auth
++-- Splash
+|   `-- Login
++-- main
+    +-- Dashboard
+    +-- Explore
+    +-- Visual
+    `-- Local
+```
 
-组件库：antd-mobile
+**导航结构**
 
-图标库：iconfont
+```
+App(stack)
++-- Splash
++-- Login
+`-- Main(tab)
+    +-- Dashboard
+    +-- Explore
+    +-- Visual
+    `-- Local
+```
 
-数据可视化：echarts
+**开发日志**
+
+[dev-log](./docs/dev-log.md)
 
 ## 施工中...
