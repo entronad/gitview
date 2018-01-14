@@ -29,14 +29,17 @@ ReactNative + Redux
 components
 +-- nav
 |   `-- AppNavigator
-|   auth
-+-- Splash
++-- auth
+|   +-- Splash
 |   `-- Login
 +-- main
-    +-- Dashboard
-    +-- Explore
-    +-- Visual
-    `-- Local
+    `-- Main
+        +-- Dashboard
+        +-- Explore
+        +-- Visual
+        +-- Local
+        +-- repository
+        `-- profile
 ```
 
 **导航结构**
@@ -45,11 +48,13 @@ components
 App(stack)
 +-- Splash
 +-- Login
-`-- Main(tab)
-    +-- Dashboard
-    +-- Explore
-    +-- Visual
-    `-- Local
++-- Main(tab)
+|   +-- Dashboard
+|   +-- Explore
+|   +-- Visual
+|   `-- Local
++-- Repository
++-- Profile
 ```
 
 **开发日志**
