@@ -45,7 +45,7 @@ const mapDispatchToProps = dispatch => bindActionCreators(
 class Login extends React.Component {
   static propTypes = {
     authorized: PropTypes.bool.isRequired,
-    accessToken: PropTypes.string.isRequired,
+    accessToken: PropTypes.string,
     logining: PropTypes.bool.isRequired,
 
     loginAction: PropTypes.func.isRequired,

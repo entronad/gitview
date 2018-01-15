@@ -55,6 +55,7 @@
 
 import { TabNavigator, TabBarBottom } from 'react-navigation';
 
+import Header from './Header';
 import Dashboard from './Dashboard';
 import Explore from './Explore';
 import Visual from './Visual';
@@ -73,5 +74,9 @@ const Main = TabNavigator(
     swipeEnabled: false,
   },
 );
+
+Main.navigationOptions = {
+  header: Header,
+};
 
 export default Main;

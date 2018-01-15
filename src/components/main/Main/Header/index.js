@@ -7,8 +7,12 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import styled from 'styled-components/native';
 
-const RootView = styled.View`
+import { SIZE, COLOR } from 'constants/styles';
 
+const RootView = styled.View`
+  width: 100%;
+  height: 45;
+  background-color: ${COLOR.PRIMARY};
 `;
 
 const mapStateToProps = state => ({
@@ -21,16 +25,16 @@ const mapDispatchToProps = dispatch => bindActionCreators(
   dispatch,
 );
 
-class Profile extends React.Component {
+class Header extends React.Component {
   static propTypes = {
   }
   render() {
     return (
       <RootView>
-        <Text>Profile</Text>
+        <Text>Header</Text>
       </RootView>
     );
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
