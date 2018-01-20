@@ -1,6 +1,6 @@
 import { AsyncStorage } from 'react-native';
 import { Toast } from 'antd-mobile';
-import { AUTH_ACCESS_TOKEN } from 'constants/storageKeys';
+import { AUTH_ACCESS_TOKEN } from 'config/storageKeys';
 
 import { login as loginApi } from 'api';
 import {

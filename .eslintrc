@@ -12,6 +12,7 @@
     "no-use-before-define": "warn",
     "class-methods-use-this": "warn",
     "global-require": "warn",
+    "no-multi-spaces": ["error", { "ignoreEOLComments": true }],
 
     "import/prefer-default-export": "off",
     "import/no-dynamic-require": "warn",

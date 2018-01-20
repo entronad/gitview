@@ -7,12 +7,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import styled from 'styled-components/native';
 
-import { SIZE, COLOR } from 'constants/styles';
-
 const RootView = styled.View`
   width: 100%;
-  height: 45;
-  background-color: ${COLOR.PRIMARY};
+  
 `;
 
 const mapStateToProps = state => ({

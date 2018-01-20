@@ -13,7 +13,7 @@ import {
 } from 'antd-mobile';
 import styled from 'styled-components/native';
 
-import { AUTH_ACCESS_TOKEN } from 'constants/storageKeys';
+import { AUTH_ACCESS_TOKEN } from 'config/storageKeys';
 import { resetNavigationTo } from 'utils';
 import { login as loginAction } from '../action';
 

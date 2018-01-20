@@ -263,41 +263,27 @@ eslint:
 
 安装eslint-config-airbnb https://www.npmjs.com/package/eslint-config-airbnb
 
-.eslintrc
+# 2018-01-20
 
-```
-{
-  "parser": "babel-eslint",
-  "extends": "airbnb",
-  "rules": {
-    "class-methods-use-this": "warn",
-    "comma-dangle": "off",
-    "global-require": "off",
-    "import/no-dynamic-require": "off",
-    "import/no-extraneous-dependencies": "off",
-    "import/prefer-default-export": "off",
-    "max-len": "warn",
-    "no-console": [
-      "warn",
-      {
-        "allow": [
-          "warn",
-          "error"
-        ]
-      }
-    ],
-    "no-else-return": "off",
-    "no-param-reassign": "off",
-    "no-underscore-dangle": "off",
-    "no-unused-vars": "warn",
-    "no-use-before-define": "warn",
-    "react/forbid-prop-types": "warn",
-    "react/no-unused-prop-types": "warn",
-    "react/prefer-stateless-function": "off",
-    "react/prop-types": "warn",
-    "react/self-closing-comp": "warn",
-    "jsx-a11y/no-static-element-interactions": "off"
-  }
-}
-```
+styles文件需求：
+
+1.供给src代码使用
+
+2.供给当前版本antd-mobile使用
+
+做法：
+
+拷贝并定制一份2.X的theme进行定制
+
+通过custom-rn-theme.js进行覆盖，目前每次需start以下
+
+https://github.com/ant-design/antd-mobile-samples/tree/master/rn-custom-ui#antd-mobile-with-rn-custom-ui
+
+TODO
+
+login页的布局
+
+
+
+
 
