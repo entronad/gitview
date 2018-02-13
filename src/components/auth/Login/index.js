@@ -13,6 +13,9 @@ import {
 } from 'antd-mobile';
 import styled from 'styled-components/native';
 
+// for dev
+import { devAccount } from '../../../../secret';
+
 import { AUTH_ACCESS_TOKEN } from 'config/storageKeys';
 import { resetNavigationTo } from 'utils';
 import { login as loginAction } from '../action';
@@ -61,10 +64,15 @@ class Login extends React.Component {
       username: null,
       password: null,
     };
+    // for dev
+    this.props.loginAction({
+      username: devAccount.username,
+      password: devAccount.password,
+    });
   }
-  componentWillUpdate(nextProps, nextState) {
-    if (nextProps.authorized) {
-      AsyncStorage.setItem(AUTH_ACCESS_TOKEN, nextProps.accessToken);
+  componentDidUpdate() {
+    if (this.props.authorized) {
+      AsyncStorage.setItem(AUTH_ACCESS_TOKEN, this.props.accessToken);
       this.navigate();
     }
   }

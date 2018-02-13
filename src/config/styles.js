@@ -1,9 +1,9 @@
 // const brandPrimary = '#108ee9';
-const brandPrimary = '#0366d6';
+const brandPrimary = '#0366d6';    // GitHub深蓝
 // const brandPrimaryTap = '#1284d6';
 const brandPrimaryTap = '#0366d6';
 // GitHub 主题色
-const brandGithub = '#1e2327';
+const gitHubDark = '#1e2327';
 
 /**
  * 改为 ConmmonJs 格式
@@ -11,7 +11,9 @@ const brandGithub = '#1e2327';
 module.exports = {
 
   // GitHub 主题色
-  brand_github: brandGithub,
+  brand_dark: gitHubDark,
+  // NavBar 高度
+  nav_bar_height: 45,
 
   // 支付宝钱包默认主题
   // https://github.com/ant-design/ant-design-mobile/wiki/设计变量表及命名规范

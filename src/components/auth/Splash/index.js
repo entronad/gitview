@@ -56,9 +56,9 @@ class Splash extends React.Component {
     // 组件渲染完毕后延时2s
     this.props.splash(2000);
   }
-  componentWillUpdate(nextProps, nextState) {
+  componentDidUpdate() {
     // 在每次state变化后监听是否要跳转了
-    if (nextProps.splashFinished && nextProps.accessTokenRead) {
+    if (this.props.splashFinished && this.props.accessTokenRead) {
       this.navigate();
     }
   }
