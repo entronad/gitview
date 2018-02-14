@@ -1,4 +1,12 @@
 export default {
+  queryViewer: () => `
+    query { 
+      viewer { 
+        login
+        avatarUrl
+      }
+    }
+  `,
   querySearchRepos: ({ query, after }) => `
     query { 
       search(query: "${query}", type: REPOSITORY, first: 100${after ? `, after: "${after}"` : ''}) {
@@ -55,4 +63,4 @@ export default {
       }
     }
   `,
-}
+};

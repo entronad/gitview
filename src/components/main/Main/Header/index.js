@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import styled from 'styled-components/native';
-import { Icon } from 'antd-mobile';
+import { Icon, Popover } from 'antd-mobile';
 
 import styles from 'config/styles';
 
@@ -58,7 +58,7 @@ class Header extends React.Component {
         <StatusBar backgroundColor={styles.brand_dark} />
         <Avatar source={{ uri: 'https://www.baidu.com/img/baidu_jgylogo3.gif' }} resizeMode="cover" />
         <Title>dddd</Title>
-        <MenuEntry type="&#xe600;" color={styles.color_text_base_inverse} />
+        <MenuEntry type="&#xe652;" color={styles.color_text_base_inverse} />
       </RootView>
     );
   }

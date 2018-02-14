@@ -5,32 +5,37 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import {
   Button,
-  WhiteSpace,
-  WingBlank,
   InputItem,
   List,
   ActivityIndicator,
 } from 'antd-mobile';
 import styled from 'styled-components/native';
 
-// for dev
-import { devAccount } from '../../../../secret';
+import styles from 'config/styles';
 
 import { AUTH_ACCESS_TOKEN } from 'config/storageKeys';
 import { resetNavigationTo } from 'utils';
 import { login as loginAction } from '../action';
 
+// for dev
+import { devAccount } from '../../../../secret';
+
 const RootView = styled.View`
   background: white;
   width: 100%;
   height: 100%;
+  padding-top: ${styles.v_spacing_lg};
+  padding-bottom: ${styles.v_spacing_lg};
+  padding-left: ${styles.h_spacing_lg};
+  padding-right: ${styles.h_spacing_lg};
 `;
 
-const Content = styled(WingBlank)`
-  height: 100%;
-`;
 const InputList = styled(List)`
-  margin-top: 50%;
+  margin-top: 200;
+`;
+
+const LoginButton = styled(Button)`
+  margin-top: ${styles.v_spacing_xl};
 `;
 
 const mapStateToProps = state => ({
@@ -98,27 +103,24 @@ class Login extends React.Component {
   render() {
     return (
       <RootView>
-        <Content>
-          <InputList>
-            <InputItem
-              placeholder="GitHub账号"
-              value={this.state.username}
-              onChange={this.setUsername}
-            >
-              账号:
-            </InputItem>
-            <InputItem
-              placeholder="GitHub登录密码"
-              type="password"
-              value={this.state.password}
-              onChange={this.setPassword}
-            >
-              密码:
-            </InputItem>
-          </InputList>
-          <WhiteSpace size="xl" />
-          <Button type="primary" onClick={this.login}>登录</Button>
-        </Content>
+        <InputList>
+          <InputItem
+            placeholder="GitHub账号"
+            value={this.state.username}
+            onChange={this.setUsername}
+          >
+            账号:
+          </InputItem>
+          <InputItem
+            placeholder="GitHub登录密码"
+            type="password"
+            value={this.state.password}
+            onChange={this.setPassword}
+          >
+            密码:
+          </InputItem>
+        </InputList>
+        <LoginButton type="primary" onClick={this.login}>登录</LoginButton>
         <ActivityIndicator
           toast
           text="登录中..."

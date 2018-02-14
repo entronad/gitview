@@ -283,6 +283,18 @@ TODO
 
 login页的布局
 
+# 2018-01-20
+
+```
+User
+{
+  login
+  name
+  avatarUrl
+  
+}
+```
+
 
 
 

@@ -1,11 +1,16 @@
 import React from 'react';
 import {
-  View,
   Text,
 } from 'react-native';
+import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import styled from 'styled-components/native';
 import { Icon } from 'antd-mobile';
+
+const RootView = styled.View`
+
+`;
 
 const mapStateToProps = state => ({
 
@@ -18,15 +23,21 @@ const mapDispatchToProps = dispatch => bindActionCreators(
 );
 
 class Explore extends React.Component {
+  static propTypes = {
+    style: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.array,
+    ]),
+  }
   static navigationOptions = {
     tabBarIcon: () => (<Icon type="&#xe7cf;" />),
     tabBarLabel: '探索',
   }
   render() {
     return (
-      <View>
+      <RootView style={this.props.style} >
         <Text>Explore</Text>
-      </View>
+      </RootView>
     );
   }
 }

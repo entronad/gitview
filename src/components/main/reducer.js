@@ -1,14 +1,17 @@
-const initalState = {
+import {
+  GET_VIEWER,
+} from './type';
 
+const initalState = {
+  viewer: null,
 };
 
 export default (state = initalState, action = {}) => {
   switch (action.type) {
-    // 读取accessToken
-    case 'READ_ACCESS_TOKEN.PENDING':
+    case GET_VIEWER.SUCCESS:
       return {
         ...state,
-        accessTokenRead: false,
+        viewer: action.payload.viewer,
       };
 
     default:

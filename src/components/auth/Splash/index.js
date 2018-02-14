@@ -30,7 +30,6 @@ const RootView = styled.View`
 const SplashImage = styled.Image`
   width: 100%;
   height: 100%;
-  resize-mode: contain;
 `;
 
 class Splash extends React.Component {
@@ -73,7 +72,7 @@ class Splash extends React.Component {
     return (
       <RootView>
         <StatusBar hidden />
-        <SplashImage source={background} />
+        <SplashImage source={background} resizeMode="cover" />
       </RootView>
     );
   }

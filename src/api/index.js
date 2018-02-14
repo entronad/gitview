@@ -161,6 +161,9 @@ export const login = async ({
   };
 };
 
+export const queryViewer = accessToken =>
+  createCall(documents.queryViewer(), accessToken);
+
 export const querySearchRepos = ({ query, after }, accessToken) =>
   createCall(documents.querySearchRepos({ query, after }), accessToken);
 
