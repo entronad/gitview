@@ -6,9 +6,11 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import styled from 'styled-components/native';
-import { Icon, Popover } from 'antd-mobile';
+import { Icon } from 'antd-mobile';
 
 import styles from 'config/styles';
+
+import { getViewer } from '../../action';
 
 const headerItemSize = 32;
 
@@ -40,24 +42,52 @@ const MenuEntry = styled(Icon)`
 `;
 
 const mapStateToProps = state => ({
-
+  viewer: state.main.viewer,
+  module: state.main.module,
 });
 const mapDispatchToProps = dispatch => bindActionCreators(
   {
-
+    getViewer,
   },
   dispatch,
 );
 
 class Header extends React.Component {
   static propTypes = {
+    style: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.array,
+    ]),
+
+    viewer: PropTypes.object,
+    module: PropTypes.string.isRequired,
+
+    getViewer: PropTypes.func.isRequired,
+  }
+  constructor(props) {
+    super(props);
+    this.props.getViewer();
+  }
+  getTitle = () => {
+    switch (this.props.module) {
+      case 'Dashboard':
+        return '我的';
+      case 'Explore':
+        return '探索';
+      case 'Visual':
+        return '数据';
+      case 'Local':
+        return '本地';
+      default:
+        return '';
+    }
   }
   render() {
     return (
-      <RootView>
+      <RootView style={this.props.style} >
         <StatusBar backgroundColor={styles.brand_dark} />
-        <Avatar source={{ uri: 'https://www.baidu.com/img/baidu_jgylogo3.gif' }} resizeMode="cover" />
-        <Title>dddd</Title>
+        <Avatar source={this.props.viewer && { uri: this.props.viewer.avatarUrl }} resizeMode="cover" />
+        <Title>{this.getTitle()}</Title>
         <MenuEntry type="&#xe652;" color={styles.color_text_base_inverse} />
       </RootView>
     );
