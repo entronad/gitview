@@ -1,3 +1,9 @@
-node_modules
-dist
+# OSX
 .DS_Store
+
+# npm
+node_modules
+miniprogram_npm
+
+# secret
+secret.js
